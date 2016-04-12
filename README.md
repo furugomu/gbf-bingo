@@ -2,7 +2,7 @@ gbf bingo
 =========
 
 ```
-javascript:((d,s)=>{s=d.createElement('script');s.src='';d.body.appendChild(s)})(document)
+javascript:((d,s)=>{s=d.createElement('script');s.src='https://cdn.rawgit.com/furugomu/gbf-bingo/master/bundle.min.js';d.body.appendChild(s)})(document)
 ```
 
 ベット金額を決めたあとで実行する。
