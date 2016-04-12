@@ -13,11 +13,15 @@ const lastHit = require('./last-hit');
 waitJQuery(main);
 function main() {
   console.log('main', jQuery);
-  onAjaxSuccess((board) => console.log('onAjaxSuccess', board));
-
+  //onAjaxSuccess((board) => console.log('onAjaxSuccess', board));
   // ビンゴをする
   let bingo = new Bingo();
   window.bingo = bingo;
+  onAjaxSuccess((board) => {
+    if (board.game_status.status === 0) {
+      window.bingo = bingo = new Bingo();
+    }
+  });
   onAjaxSuccess((board) => playBingo(bingo, board));
 
   // 再プレイボタンを押し続ける

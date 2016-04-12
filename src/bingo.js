@@ -42,16 +42,16 @@ class Bingo {
     return this.sequences().some((cells) => cells.filter((c) => c.isOpened).length >= 4)
   }
 
-  // たてよこななめ
+  // よこたてななめ
   sequences() {
     let all = [];
-    // たて
-    for (let x of this.range) {
-      all.push(this.range.map((y) => this.at(x, y)));
-    }
     // よこ
     for (let y of this.range) {
       all.push(this.range.map((x) => this.at(x, y)));
+    }
+    // たて
+    for (let x of this.range) {
+      all.push(this.range.map((y) => this.at(x, y)));
     }
     // ななめ
     all.push(zip(this.range, this.range).map((xy) => this.at(xy[0], xy[1])));
@@ -75,7 +75,8 @@ class Cell {
     if (x.can_open !== undefined) this.canOpen = x.can_open !== 0;
   }
 
-  get isOpened() { return this.openedType !== undefined; }
+  // opened_type 1: 星, 2: ダイヤ, 3: FREE, false: 今飛んできた数字？
+  get isOpened() { return [1,2,3,false].indexOf(this.openedType) >= 0; }
 }
 
 function range(lo, hi) {
