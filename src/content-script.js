@@ -28,7 +28,13 @@ function main() {
   setInterval(() => jQuery('.btn-play-again').trigger('tap'), 2211);
 
   // ベット額を決めるダイアログの Play ボタンを押し続ける
-  setInterval(() => jQuery('.btn-play-ok').trigger('tap'), 2121);
+  setInterval(() => {
+    // 画像認証ダイアログが出ていない時だけ
+    // https://gist.github.com/furugomu/007523e10689d92706cf6ac1ab7bdd80
+    if (!document.querySelector('#pop-captcha .pop-show')) {
+      jQuery('.btn-play-ok').trigger('tap');
+    }
+  }, 2121);
 }
 
 function playBingo(bingo, board) {
