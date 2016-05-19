@@ -1,8 +1,8 @@
 'use strict';
 
-// gbf.mbga.jp では console.log が潰されている
+// gbf.game.mbga.jp では console.log が潰されている
 if (console.log.toString().indexOf('native code') < 0) {
-  console.log = Object.getPrototypeOf(console).log;
+  console.log = console.info;
 }
 window.onerror = null;
 
